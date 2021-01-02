@@ -117,8 +117,10 @@ class OurNeuralNetwork:
             loss = mse_loss(all_y_trues, y_preds)
             print("Epoch %d loss: %.3f" % (epoch, loss))
 
-        
-# Define dataset
+'''        
+data is calculated by substracting the mean of the dataset (a table containing some persons along with weights(lb) and heights(in)) 
+from the actual value (for a better precision)
+'''
 data = np.array([
   [-10, -2],  # Alice
   [19, -5],   # Bob
@@ -132,11 +134,11 @@ all_y_trues = np.array([
   1, # Diana
 ])
 
-# Train our neural network!
+#training phase
 network = OurNeuralNetwork()
 network.train(data, all_y_trues)
 
-# Make some predictions
+#prediction phase
 emily = np.array([-12, -4]) # 128 pounds, 63 inches
 frank = np.array([15, 1])  # 155 pounds, 68 inches
 print("Emily: %.3f" % network.feedforward(emily)) # 0.951 - F
